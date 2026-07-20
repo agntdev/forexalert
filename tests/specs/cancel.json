@@ -1,0 +1,20 @@
+[
+  {
+    "name": "/cancel",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Cancel a specific alert by ID"
+            }
+          }
+        ],
+        "send": {
+          "text": "/cancel"
+        }
+      }
+    ]
+  }
+]
