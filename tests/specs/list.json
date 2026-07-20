@@ -1,0 +1,20 @@
+[
+  {
+    "name": "/list",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Show active alerts with cancel options"
+            }
+          }
+        ],
+        "send": {
+          "text": "/list"
+        }
+      }
+    ]
+  }
+]
