@@ -2,15 +2,17 @@ import { Composer } from "grammy";
 import type { Ctx } from "../bot.js";
 import { inlineButton, inlineKeyboard } from "../toolkit/index.js";
 
-// /help — plain-language explanation for non-technical users. This bot is
-// button-driven: tell the user to tap /start to open the menu rather than listing
-// slash commands. The same text is shown when the user taps the Help button on the
-// main menu (`menu:help`). Enhance the copy for your specific bot; keep it short.
 const composer = new Composer<Ctx>();
 
 const HELP =
-  "ℹ️ Tap /start to open the menu, then pick what you want from the buttons.\n\n" +
-  "Everything in this bot is reachable by tapping — you don't need to remember any commands.";
+  "ℹ️ Forex Alert Bot\n\n" +
+  "Get notified when a currency pair crosses your target price.\n\n" +
+  "Tap 🔔 New alert to create one, or 📋 My alerts to see your active alerts.\n\n" +
+  "You can also type:\n" +
+  "• /alert EUR/USD 1.1000 above\n" +
+  "• /list — see all your alerts\n" +
+  "• /cancel [id] — cancel an alert\n\n" +
+  "Tap /start to open the menu.";
 
 const backToMenu = inlineKeyboard([[inlineButton("⬅️ Back to menu", "menu:main")]]);
 

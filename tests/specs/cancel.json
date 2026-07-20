@@ -1,19 +1,33 @@
 [
   {
-    "name": "/cancel",
+    "name": "/cancel with no args shows usage",
     "steps": [
       {
+        "send": { "text": "/cancel" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Cancel a specific alert by ID"
+              "text": "Usage: /cancel [alert ID]\n\nFind your alert IDs with /list."
             }
           }
-        ],
-        "send": {
-          "text": "/cancel"
-        }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "/cancel with unknown ID shows error",
+    "steps": [
+      {
+        "send": { "text": "/cancel badid123" },
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Alert not found — check the ID and try again."
+            }
+          }
+        ]
       }
     ]
   }

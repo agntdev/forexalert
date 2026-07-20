@@ -8,7 +8,7 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "ℹ️ Tap /start to open the menu, then pick what you want from the buttons.\n\nEverything in this bot is reachable by tapping — you don't need to remember any commands."
+              "text": "ℹ️ Forex Alert Bot\n\nGet notified when a currency pair crosses your target price.\n\nTap 🔔 New alert to create one, or 📋 My alerts to see your active alerts.\n\nYou can also type:\n• /alert EUR/USD 1.1000 above\n• /list — see all your alerts\n• /cancel [id] — cancel an alert\n\nTap /start to open the menu."
             }
           }
         ]

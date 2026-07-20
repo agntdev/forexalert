@@ -1,19 +1,82 @@
 [
   {
-    "name": "/alert",
+    "name": "/alert with no args shows usage",
     "steps": [
       {
+        "send": { "text": "/alert" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Create a new price alert with format: /alert [pair] [price] [above|below]"
+              "text": "Usage: /alert [pair] [price] [above|below]\n\nExample: /alert EUR/USD 1.1000 above"
             }
           }
-        ],
-        "send": {
-          "text": "/alert"
-        }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "/alert with valid args shows confirmation",
+    "steps": [
+      {
+        "send": { "text": "/alert EUR/USD 1.1000 above" },
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "🔔 New price alert\n\nPair: EUR/USD\nTarget: above 1.1\n\nSave this alert?"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "confirming alert saves it",
+    "steps": [
+      {
+        "send": { "text": "/alert EUR/USD 1.1000 above" },
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "🔔 New price alert\n\nPair: EUR/USD\nTarget: above 1.1\n\nSave this alert?"
+            }
+          }
+        ]
+      },
+      {
+        "send": { "callback": "alert:confirm" },
+        "expect": [
+          { "method": "answerCallbackQuery" },
+          { "method": "editMessageText" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "discarding alert cancels it",
+    "steps": [
+      {
+        "send": { "text": "/alert EUR/USD 1.1000 above" },
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "🔔 New price alert\n\nPair: EUR/USD\nTarget: above 1.1\n\nSave this alert?"
+            }
+          }
+        ]
+      },
+      {
+        "send": { "callback": "alert:cancel" },
+        "expect": [
+          { "method": "answerCallbackQuery" },
+          {
+            "method": "editMessageText",
+            "payload": { "text": "Alert discarded." }
+          }
+        ]
       }
     ]
   }

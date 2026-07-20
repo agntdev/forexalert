@@ -1,19 +1,34 @@
 [
   {
-    "name": "/list",
+    "name": "/list with no alerts shows empty state",
     "steps": [
       {
+        "send": { "text": "/list", "userId": 99 },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Show active alerts with cancel options"
+              "text": "No active alerts — tap 🔔 New alert to create one."
             }
           }
-        ],
-        "send": {
-          "text": "/list"
-        }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "list:show callback with no alerts shows empty state",
+    "steps": [
+      {
+        "send": { "callback": "list:show", "userId": 99 },
+        "expect": [
+          { "method": "answerCallbackQuery" },
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "No active alerts — tap 🔔 New alert to create one."
+            }
+          }
+        ]
       }
     ]
   }
